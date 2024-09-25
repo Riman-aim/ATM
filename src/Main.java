@@ -43,6 +43,7 @@ public class Main {
             User user = new User(email , cart);
             face.touchSignUp(cart , user);
             face.finishSignUp();
+            System.out.println("finish");
 
 
         }
