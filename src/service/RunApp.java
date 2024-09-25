@@ -30,19 +30,20 @@ public class RunApp {
         return generate_random_cart_cvv2();
     }
 
-    public void initUser(){
 
-    }
     public void signUp(Cart cart , User user ) throws SQLException {
         this.signCart(cart);
         this.signUser(user);
     }
-    public void signIn() throws SQLException {
+    public boolean signIn(String email , String password) throws SQLException {
+        if (canEnterUser(email, password)) return true;
+        else
+            return false;
 
     }
 
 
-    public void signUser(User user  ) throws SQLException {
+    private void signUser(User user  ) throws SQLException {
         if (canInitUser(user))
             databaseQueries.saveUser(user);
 
@@ -57,9 +58,20 @@ public class RunApp {
         return false ;
     }
 
-    public void signCart(Cart cart ) throws SQLException {
+    private void signCart(Cart cart ) throws SQLException {
         databaseQueries.save_cart(cart);
     }
+    public void upCash(Long cost , Cart cart ) throws SQLException {
+        databaseQueries.upCash(cost,cart);
+    }
+    public boolean canEnterUser(String email , String password) throws SQLException {
+        if (databaseQueries.isValidUser(email,password))
+            return true ;
+        return false ;
+    }
+
+
+
 
 
 }

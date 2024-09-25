@@ -7,7 +7,7 @@ public class User {
     private String email ;
     Cart cart ;
 
-    public User(int id,  String email, Cart cart) {
+    public User( String email, Cart cart) {
 
         this.first_name = cart.getFirst_name();
         this.last_name = cart.getLast_name();
@@ -58,7 +58,7 @@ public class User {
     }
 
     public Cart getCart() {
-        return cart;
+        return this.cart;
     }
 
     public void setCart(Cart cart) {
